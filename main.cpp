@@ -3,12 +3,10 @@ using namespace std;
 
 int main()
 {
-    int age;
-
-    cout << "Enter your age: ";
-    cin >> age;
-
-    cout << "You are " << age << " years old.";
+    const int a = 10; //Const is used so the value of a can't be changed
+    int b = 50;
+    b = 100; //As you can see, B is changed here
+    cout<<a<<b;
 
     return 0;
 }
