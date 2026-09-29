@@ -1,26 +1,19 @@
 #include <iostream>
-#include <string>
-
+#define PI 3.14
 using namespace std;
 
 int main()
 {
-    string name;
-    string address;
-    string contactNumber;
+  const string a = "Hello";
+  const string b = "World";
 
-    cout << "Enter your name: ";
-    getline(cin, name);
+  int x = 10;
+  int y = 20;
 
-    cout << "Enter your address: ";
-    getline(cin, address);
-
-    cout << "Enter your contact number: ";
-    getline(cin, contactNumber);
-
-    cout << "Name: " << name << endl;
-    cout << "Address: " << address << endl;
-    cout << "Contact Number: " << contactNumber << endl;
-
-    return 0;
+  cout<<"A = "<<a<<endl;
+  cout<<"B = "<<b<<endl;
+  cout<<"X = "<<x<<endl;
+  cout<<"Y = "<<y<<endl;
+  cout<<"PI = "<<PI;
+  return 0;
 }
