@@ -3,3 +3,5 @@ Float
 Double
 Char
 Bool
+
+// If we dont know the amount of times we will go through iterations, we will use while loop
