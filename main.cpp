@@ -1,112 +1,74 @@
 #include<iostream>
 using namespace std;
-
 int main()
-{  
-    //Step 1
-    //Entering the Pin
-    int StdntRollNo = 23900;
-    int LastTwoDigit = StdntRollNo % 100;
-    int CorrectPin = LastTwoDigit * 100 + LastTwoDigit;
-    int Pin;
-     int attempts = 0;
-    do {
-        cout << "Enter Your Pin (4 - digit): ";
-        cin >> Pin;
-        if (Pin == CorrectPin) {
-            cout << "Welcome!" << endl;
-            break;
-        } else {
-            cout << "Invalid Pin, Please try again!" << endl;
-        }
-        ++attempts;
-        if (attempts > 2){
-            cout<<"Account Locked"<<endl;
-            return 0;
-        }
-    } while (attempts <= 3);
-    //Step 2
-    int choice;
-    int price;
-    int quantity;
-    int totalItems = 0;
-    int totalBill = 0;
-    do {  
-        //Showing Menu
-        cout<<"Please Choose What You Want To Eat"<<endl;
-        cout<<"1 - Zinger Burger - 450PKR "<<endl;
-        cout<<"2 - Loaded Fries - 250PKR "<<endl;
-        cout<<"3 - Cold Drink - 100PKR "<<endl;
-        cout<<"4 - Exit and Generate Bill"<<endl;
-        cin>>choice;
-        switch(choice){
-            case 1: cout<<"You Choose a Zinger Burger - 450PKR"<<endl;
-                    price = 450;
-                    //Step 3
-                    cout<<"Choose the Quantity: ";
-                    cin>>quantity;
-                    while(quantity < 1){
-                        cout<<"Invalid Quantity."<<endl;
-                          cout<<"Choose the Quantity: ";
-                     cin>>quantity;
-                    }
-                    totalItems += quantity;
-                    totalBill = totalBill + price * quantity;
-            break;
-            case 2: cout<<"Loaded Fries - 250PKR "<<endl;
-                    price = 250;     
-                    //Step 3
-                    cout<<"Choose the Quantity: ";
-                     cin>>quantity;
-                    while(quantity < 1){
-                        cout<<"Invalid Quantity."<<endl;
-                          cout<<"Choose the Quantity: ";
-                     cin>>quantity;
-                    }
-                    totalItems += quantity;
-                    totalBill = totalBill + price * quantity;
-            break;
-            case 3: cout<<"Cold Drink - 100PKR "<<endl;
-                    price = 100;    
-                    //Step 3
-                    cout<<"Choose the Quantity: ";
-                     cin>>quantity;
-                    while(quantity < 1){
-                        cout<<"Invalid Quantity."<<endl;
-                          cout<<"Choose the Quantity: ";
-                     cin>>quantity;
-                    }
-                    totalItems += quantity;
-                    totalBill = totalBill + price * quantity;
-            break; 
-            case 4: cout<<"Exit and Generate Bill"<<endl;
-            break;
-            default: cout<<"Invalid choice, please select 1-4"<<endl;
-            break;
+{
+  int serviceCode; 
+  int userChoice;
+  int number_of_pages = 0;
+  int total_num_pages;
+  int pagePrice = 0;
+  int rate_per_page = 0;
+  int totalAmount = 0;
+  int pageDiscount = 0;
+  int finalAmount;
+  do{
+    cout<<"Service Code\t"<<"Service Name\t"<<"Rate per page\n";
+    cout<<"1\t"<<"Black and White Photocopy\t"<<"Rs. 5\n";
+    cout<<"2\t"<<"Color Photocopy\t"<<"\t\tRs. 20\n";
+    cout<<"3\t"<<"Black and White Print\t"<<"\tRs. 10\n";
+    cout<<"4\t"<<"Color Print\t"<<"\t\tRs. 30\n";
+    cout<<"Enter service code (0 to stop): "<<endl;
+    cin>>userChoice;
+    serviceCode = userChoice;
+    switch(userChoice){
+      case 1 : cout<<"Enter number of pages:"<<endl;
+              pagePrice = 5;
+              cin>>number_of_pages;
+              rate_per_page = number_of_pages * pagePrice;
+              totalAmount += rate_per_page;
+              total_num_pages += number_of_pages;
+              break;
+      case 2 : cout<<"Enter number of pages:"<<endl;
+              pagePrice = 20;
+              cin>>number_of_pages;
+              rate_per_page = number_of_pages * pagePrice;
+              totalAmount += rate_per_page;
+              total_num_pages += number_of_pages;
+              break;
+      case 3 : cout<<"Enter number of pages:"<<endl;
+              pagePrice = 10;
+              cin>>number_of_pages;
+              rate_per_page = number_of_pages * pagePrice;
+              totalAmount += rate_per_page;
+              total_num_pages += number_of_pages;
+              break;
+      case 4 : cout<<"Enter number of pages:"<<endl;
+              pagePrice = 30;
+              cin>>number_of_pages;
+              rate_per_page = number_of_pages * pagePrice;
+              totalAmount += rate_per_page;
+              total_num_pages += number_of_pages;
+              break; 
+      default: cout<<"Invalid Service Code.";
+      break;
 
-        }
+    }
+    if(serviceCode > 4){
+      cout<<"Invalid Service Code.";
+    }
+  }while(serviceCode != 0);
+  if(total_num_pages >= 20){
+    pageDiscount = totalAmount * 0.10;
+  }
+  //Fixed Service Charge 
+   finalAmount = totalAmount + 25;
 
-    }while(choice != 4); 
-    //Step - 4 
-    //The Receipt
-    cout << "\n================================\n"
-         << "      CAMPUS SMART CAFE\n"
-         << "           RECEIPT"
-         << "\n================================\n"
-         << "Total Items Ordered : "<<totalItems<<endl
-         << "Total Bill : "<<totalBill<<endl
-         << "\n================================\n"
-         << "Thank you for Visiting!"<<endl
-         << "Make sure to rate our Café"<<endl;
-         for(int row = 0; row <= 5; row++){
-            for(int col = 0; col < row; col++){
-                cout<<"*";
-            }
-            cout<<endl;
-         }
+   cout<<"\n------"<<"LIBRARY PHOTOCOPY BILL"<<"------\n"
+    <<"Total Pages\t:"<<number_of_pages<<endl
+    <<"Total Amount\t:"<<"Rs. "<<totalAmount<<endl
+    <<"Discount (10%)\t:"<<"Rs. "<<pageDiscount<<endl
+    <<"Service Charge\t:"<<"Rs. "<<25<<endl
+    <<"-------------------------------------------------\n"
+    <<"Final Payable\t:"<<"Rs. "<<finalAmount<<endl;
 
-
-    return 0; 
-    
 }
-
