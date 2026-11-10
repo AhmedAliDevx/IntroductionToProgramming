@@ -1,15 +1,19 @@
 #include<iostream>
 using namespace std;
-void func2(int result){
-  cout<<result;
+
+int reverseDigit(int num){
+  int re_verse = 0;
+  int remainder;
+  while ( num > 0){
+   remainder = num % 10;
+  re_verse = re_verse * 10 + remainder;
+  num /= 10;
+ } 
+ return re_verse;
 }
-void func1(int a, int b ){
-  int sum = a + b;
-  func2(sum);
-}
-int main()
-{
-  int num1 = 5, num2 = 10;
-  func1(num1, num2);
+int main(){
+  int num = 12345;
+  int reversedNum = reverseDigit(num);
+  cout<<"Reversed number: " << reversedNum << endl;
   return 0;
 }
